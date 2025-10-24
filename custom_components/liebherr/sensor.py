@@ -18,10 +18,12 @@ async def async_setup_entry(
     api = hass.data[DOMAIN][config_entry.entry_id]["api"]
     coordinator = hass.data[DOMAIN][config_entry.entry_id]["coordinator"]
 
+    await asyncio.sleep(30)
     appliances = await api.get_appliances()
 
     entities = []
     for appliance in appliances:
+        await asyncio.sleep(30)
         controls = await api.get_controls(appliance["deviceId"])
         if not controls:
             _LOGGER.warning("No controls found for appliance %s",
@@ -170,6 +172,7 @@ class LiebherrSensor(SensorEntity):
 
     async def async_update(self):
         """Fetch new state data for the sensor."""
+        await asyncio.sleep(30)g
         await self._coordinator.async_request_refresh()
 
     @property
