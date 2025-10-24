@@ -19,7 +19,7 @@
         }
     },
     "notificationType": {
-        "door_alarm": "Ajtó riasztás",
+        "door_alarm": "Ajtó Riasztás",
         "auto_door_obstacle_alarm": "AutoDoor akadály",
         "auto_door_overheat_alarm": "AutoDoor motor túlmelegedés",
         "upper_power_failure_alarm": "Túláram",
