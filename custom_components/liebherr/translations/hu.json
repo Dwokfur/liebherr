@@ -3,10 +3,10 @@
     "options": {
         "step": {
             "init": {
-                "title": "Notifications",
-                "description": "If you want to receive alerts and notifications for your Liebherr devices, please select the devices you want to receive notifications for.",
+                "title": "Értesítések",
+                "description": "Ha értesítéseket és riasztásokat szeretne kapni a Liebherr berendezéseiről, kérem válassza ki a berendezéseket.",
                 "data": {
-                    "devices_to_notify": "Devices for which you would like to receive notifications:"
+                    "devices_to_notify": "Berendezések, melyekről értesítéseket szeretne kapni:"
                 }
             }
         }
@@ -14,17 +14,17 @@
     "config": {
         "step": {
             "user": {
-                "description": "Connect your appliance via the **SmartDevice app** to your home WiFi network.\n\n**1. [Download](https://smartdevice.onelink.me/OrY5/8neax8lp) the app**\n**2. Follow the [instructions](https://go.liebherr.com/cb2ct1) to connect your appliance**\n**3. Get your API Key via the SmartDevice app**\n\nGo to *Settings* in the SmartDevice app and select **“Beta features”**, then activate the HomeAPI.\n\nCopy the API Key and paste it below. The API Key can only be copied **once**.\n\nAs soon as you leave the screen, the code **cannot** be copied again.\n\nIf you forgot your key, you need to create a new one via the app."
+                "description": "Csatlakoztassa a berendezését a **SmartDevice alkalmazás** segítségével az otthoni WiFi hálózathoz.\n\n**1. [Töltse le](https://smartdevice.onelink.me/OrY5/8neax8lp) az alkalmazást**\n**2. Kövesse az [utasításokat](https://go.liebherr.com/cb2ct1) a berendezése csatlakoztatásához**\n**3. Generáljon egy API Key-r a SmartDevice alkalmazásban**\n\nMenjen a *Beállítások* menübe a SmartDevice alkalmazásban és válassza ki a **“Beta features”** lehetőséget, ahol aktiválja a HomeAPI-t.\n\nMásolja ki az API Key-t és másolja be lent. Az API Key másolására **egy lehetősége** van.\n\nAhogy elhagyja a képernyőt, a kódhoz **nem tud hozzáférni** újból.\n\nHa elfelejti a kódot, egy újat kell létrehozni az alkalmazásban."
             }
         }
     },
     "notificationType": {
-        "door_alarm": "Door Alarm",
-        "auto_door_obstacle_alarm": "AutoDoor obstacle detected",
-        "auto_door_overheat_alarm": "AutoDoor engine overheated",
-        "upper_power_failure_alarm": "Power failure",
-        "lower_power_failure_alarm": "Power failure",
-        "upper_temperature_alarm": "Temperature alarm",
-        "lower_temperature_alarm": "Temperature alarm"
+        "door_alarm": "Ajtó riasztás",
+        "auto_door_obstacle_alarm": "AutoDoor akadály",
+        "auto_door_overheat_alarm": "AutoDoor motor túlmelegedés",
+        "upper_power_failure_alarm": "Túláram",
+        "lower_power_failure_alarm": "Áramellátási zavar",
+        "upper_temperature_alarm": "Túlmelegedés",
+        "lower_temperature_alarm": "Fagyásveszély"
     }
 }
