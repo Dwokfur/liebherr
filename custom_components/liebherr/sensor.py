@@ -16,11 +16,13 @@ async def async_setup_entry(
     """Set up sensors."""
     api = hass.data[DOMAIN][config_entry.entry_id]["api"]
     coordinator = hass.data[DOMAIN][config_entry.entry_id]["coordinator"]
+    await asyncio.sleep(30)
     appliances = await api.get_appliances()
 
     entities = []
 
     for appliance in appliances:
+        await asyncio.sleep(30)
         controls = await api.get_controls(appliance["deviceId"])
         if not controls:
             _LOGGER.warning("No controls found for appliance %s", appliance["deviceId"])
@@ -150,7 +152,7 @@ class LiebherrSensor(SensorEntity):
 
     async def _delayed_refresh(self):
         """Force refresh after delay if moving detected."""
-        await asyncio.sleep(5)
+        await asyncio.sleep(30)
         await self._coordinator.async_request_refresh()
 
 
@@ -171,6 +173,7 @@ class LiebherrSensor(SensorEntity):
 
     async def async_update(self):
         """Fetch new state data for the sensor."""
+        await asyncio.sleep(30)
         await self._coordinator.async_request_refresh()
 
     @property
