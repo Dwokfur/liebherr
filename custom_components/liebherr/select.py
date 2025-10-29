@@ -43,10 +43,12 @@ async def async_setup_entry(
     api = hass.data[DOMAIN][config_entry.entry_id]["api"]
     coordinator = hass.data[DOMAIN][config_entry.entry_id]["coordinator"]
 
+    await asyncio.sleep(30)
     appliances = await api.get_appliances()
     entities = []
 
     for appliance in appliances:
+        await asyncio.sleep(30)
         controls = await api.get_controls(appliance["deviceId"])
         if not controls:
             _LOGGER.warning("No controls found for appliance %s", appliance["deviceId"])
@@ -157,10 +159,11 @@ class LiebherrSelect(SelectEntity):
                 data,
             )
 
-            await asyncio.sleep(5)
+            await asyncio.sleep(30)
 
         except Exception as e:
             _LOGGER.error("Failed to set option '%s' for '%s': %s", option, self._identifier, e)
             return
 
         await self._coordinator.async_request_refresh()
+        await asyncio.sleep(30)
