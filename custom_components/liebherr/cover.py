@@ -145,8 +145,8 @@ class LiebherrCover(CoverEntity):
             await asyncio.sleep(30)  # Let the door start moving
         except Exception as e:
             _LOGGER.error("Failed to open door %s: %s", self._identifier, e)
-        await self._coordinator.async_request_refresh()
         await asyncio.sleep(30)
+        await self._coordinator.async_request_refresh()
 
     async def async_close_cover(self, **kwargs):
         """Send command to close the cover."""
@@ -156,8 +156,8 @@ class LiebherrCover(CoverEntity):
             await asyncio.sleep(30)  # Let the door start moving
         except Exception as e:
             _LOGGER.error("Failed to close door %s: %s", self._identifier, e)
-        await self._coordinator.async_request_refresh()
         await asyncio.sleep(30)
+        await self._coordinator.async_request_refresh()
 
     async def async_update(self):
         """Called by coordinator on data update; update state with debounce."""
