@@ -14,7 +14,7 @@ from .models import AutoDoorControl
 
 _LOGGER = logging.getLogger(__name__)
 
-DEBOUNCE_SECONDS = 5  # time to wait before confirming final door state
+DEBOUNCE_SECONDS = 30  # time to wait before confirming final door state
 
 
 async def async_setup_entry(
@@ -24,10 +24,12 @@ async def async_setup_entry(
     api = hass.data[DOMAIN][config_entry.entry_id]["api"]
     coordinator = hass.data[DOMAIN][config_entry.entry_id]["coordinator"]
 
+    await asyncio.sleep(30)
     appliances = await api.get_appliances()
     entities = []
 
     for appliance in appliances:
+        await asyncio.sleep(30)
         controls = await api.get_controls(appliance["deviceId"])
         if not controls:
             _LOGGER.warning("No controls found for appliance %s", appliance["deviceId"])
@@ -140,20 +142,22 @@ class LiebherrCover(CoverEntity):
         try:
             data = AutoDoorControl(zoneId=self._control.get("zoneId"), value=True)
             await self._api.set_value(self._device_id, self._control["name"], data)
-            await asyncio.sleep(3)  # Let the door start moving
+            await asyncio.sleep(30)  # Let the door start moving
         except Exception as e:
             _LOGGER.error("Failed to open door %s: %s", self._identifier, e)
         await self._coordinator.async_request_refresh()
+        await asyncio.sleep(30)
 
     async def async_close_cover(self, **kwargs):
         """Send command to close the cover."""
         try:
             data = AutoDoorControl(zoneId=self._control.get("zoneId"), value=False)
             await self._api.set_value(self._device_id, self._control["name"], data)
-            await asyncio.sleep(3)  # Let the door start moving
+            await asyncio.sleep(30)  # Let the door start moving
         except Exception as e:
             _LOGGER.error("Failed to close door %s: %s", self._identifier, e)
         await self._coordinator.async_request_refresh()
+        await asyncio.sleep(30)
 
     async def async_update(self):
         """Called by coordinator on data update; update state with debounce."""
