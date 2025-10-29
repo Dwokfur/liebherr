@@ -154,11 +154,13 @@ class LiebherrSwitch(SwitchEntity):
     async def async_turn_on(self, **kwargs):
         """Turn the switch on."""
         if self._control["type"] == "BottleTimer":
+            await asyncio.sleep(30)
             await self._api.set_value(
                 self._appliance["deviceId"] + "/" + self._control["name"],
                 {"bottleTimer": "ON"},
             )
         if self._control["type"] == "AutoDoor":
+            await asyncio.sleep(30)
             await self._api.set_value(
                 self._appliance["deviceId"] + "/" + self._control["name"],
                 {"bottleTimer": "ON"},
@@ -171,6 +173,7 @@ class LiebherrSwitch(SwitchEntity):
                     zoneId=self._control.get("zoneId"), value=True
                 )
 
+            await asyncio.sleep(30)
             await self._api.set_value(
                 self._appliance["deviceId"], self._control["name"], data
             )
@@ -179,6 +182,7 @@ class LiebherrSwitch(SwitchEntity):
     async def async_turn_off(self, **kwargs):
         """Turn the switch off."""
         if self._control["type"] == "bottletimer":
+            await asyncio.sleep(30)
             await self._api.set_value(
                 self._appliance["deviceId"] + "/" + self._control["name"],
                 {"bottleTimer": "OFF"},
@@ -191,6 +195,7 @@ class LiebherrSwitch(SwitchEntity):
                     zoneId=self._control.get("zoneId"), value=False
                 )
 
+            await asyncio.sleep(30)
             await self._api.set_value(
                 self._appliance["deviceId"], self._control["name"], data
             )
